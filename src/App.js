@@ -1,4 +1,4 @@
-import React from 'react' 
+import React, { useEffect } from 'react' 
 import { Switch, Route, Redirect } from 'react-router-dom' 
 import { connect } from 'react-redux' 
 import { createStructuredSelector } from 'reselect' 
@@ -19,60 +19,36 @@ import { selectCurrentUser } from './redux/user/user.selectors'
 // import { selectCollectionsForPreview } from './redux/shop/shop.selectors' 
 import { checkUserSession } from './redux/user/user.actions'
 
-class App extends React.Component {
-  unsubscribeFromAuth = null 
-
-  componentDidMount() {
-    const { checkUserSession } = this.props 
-    checkUserSession()
-
-    // REPLACING WITH SAGA CODE IN USER.SAGAS.JS
-  /*  this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth) 
-
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          }) 
-        }) 
-       }
-
-      setCurrentUser(userAuth)
-      addCollectionAndDocuments('collections', collectionsArray.map(
-        ({ title, items }) => ({ title, items})))
-    }) */
-  } 
- // Close the subscription
-  componentWillUnmount() {  
-    this.unsubscribeFromAuth() 
-  }
-
-  render() {
-    return (
-      <div>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-          <Route
-            exact
-            path='/signin'
-            render={() =>
-              this.props.currentUser ? (
-                <Redirect to='/' />
-              ) : (
-                <SignInAndSignUpPage />
-              )
-            }
-          />
-        </Switch>
-      </div>
-    ) 
-  }
+const App = ({ checkUserSession, currentUser }) => {
+  
+  // Replace componentDidMount
+  useEffect(() => {
+    checkUserSession() // only want this to render once, after SIGN_IN_SUCCESS
+  }, [checkUserSession]) // dependancy array
+  
+  return (
+    <div>
+      <Header />
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/shop' component={ShopPage} />
+        <Route exact path='/checkout' component={CheckoutPage} />
+        <Route
+          exact
+          path='/signin'
+          render={() =>
+            currentUser ? (
+              <Redirect to='/' />
+            ) : (
+              <SignInAndSignUpPage />
+            )
+          }
+        />
+      </Switch>
+    </div>
+  ) 
 }
+
 
 /* RENDER is a JS invocation, allows us to use JS in place of component,
 determines which component to return: If this.props.currentUser is true, 

@@ -1,4 +1,4 @@
-import React from 'react' 
+import React, { useEffect } from 'react' 
 import { Route } from 'react-router-dom' 
 // import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux' 
@@ -17,28 +17,27 @@ import CollectionPageContainer from '../collection/collection.container'
 
 /* THIS FILE CREATES THE /3000 HOMEPAGE.  COLLECTION DATA IS POPULATED HERE (ALL 5 COLLECTIONS ITEMS) */
 
-class ShopPage extends React.Component {
-  componentDidMount() {
-    const { fetchCollectionsStart } = this.props
+const ShopPage = ({ fetchCollectionsStart, match }) => {
+
+  useEffect(() => {
     fetchCollectionsStart()
-  }
-  render() {
-    const { match } = this.props 
-    return (
-      <div className='shop-page'>
-        <Route
-          exact
-          path={`${match.path}`}
-          component={CollectionsOverviewContainer}
-        />
-        <Route
-          path={`${match.path}/:collectionId`}
-          component = {CollectionPageContainer}
-        />
-      </div>
-    ) 
-  }
-}
+  }, [fetchCollectionsStart]) // dependancy array, stop useEffect firing twice
+ 
+   return (
+     <div className='shop-page'>
+       <Route
+         exact
+         path={`${match.path}`}
+         component={CollectionsOverviewContainer}
+       />
+       <Route
+         path={`${match.path}/:collectionId`}
+         component = {CollectionPageContainer}
+       />
+     </div>
+   ) 
+ }
+
 
 // Modified for Redux-Thunk
 const mapDispatchToProps = dispatch => ({
