@@ -17,7 +17,7 @@ into reducers and functions and removed from shop.component.jsx */
 
 /* Fetch state from the shop.reducer */
 export const fetchCollectionsStart = () => ({
-  type: ShopActionTypes.FETCH_COLLECTION_START
+  type: ShopActionTypes.FETCH_COLLECTIONS_START
 });
 
 /* Tell the reducer that the API call was a success because we now have the collectionsMap */
