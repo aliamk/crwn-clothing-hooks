@@ -3,13 +3,13 @@ import 'firebase/firestore'   // for the database
 import 'firebase/auth'  // for the authorisation
 
 const config = {
-  apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
-  authDomain: 'crwn-db.firebaseapp.com',
-  databaseURL: 'https://crwn-db.firebaseio.com',
-  projectId: 'crwn-db',
-  storageBucket: 'crwn-db.appspot.com',
-  messagingSenderId: '850995411664',
-  appId: '1:850995411664:web:7ddc01d597846f65'
+  apiKey: "AIzaSyCE8o3gtPNquPCj89EfRlgbVlCtEChYQSk",
+  authDomain: "crwn-db-949da.firebaseapp.com",
+  databaseURL: "https://crwn-db-949da.firebaseio.com",
+  projectId: "crwn-db-949da",
+  storageBucket: "crwn-db-949da.appspot.com",
+  messagingSenderId: "703367615173",
+  appId: "1:703367615173:web:4b8686cc8be509b48dd6ac",
 } 
 
 firebase.initializeApp(config) 
