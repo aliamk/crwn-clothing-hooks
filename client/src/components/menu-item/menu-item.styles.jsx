@@ -27,6 +27,11 @@ export const MenuItemContainer = styled.div`
   &:last-child {
     margin-left: 7.5px;
   }
+
+  /* Anything screen width less than 800px will inherit the following styles */
+  @media screen and (max-width: 800px) {
+    height: 200px;
+  }
 `;
 
 export const BackgroundImageContainer = styled.div`

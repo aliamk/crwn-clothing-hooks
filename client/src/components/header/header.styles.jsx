@@ -8,6 +8,13 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+
+  /* Anything screen width less than 800px will inherit the following styles */
+  @media screen and (max-width: 800px) {
+    height: 60px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
 `;
 
 /* Because LINK is a component, we use brackets like a function
@@ -16,6 +23,12 @@ export const LogoContainer = styled(Link)`
     height: 100%;
     width: 70px;
     padding: 25px;
+
+/* Anything screen width less than 800px will inherit the following styles */
+ @media screen and (max-width: 800px) {
+   width: 50px;
+   padding: 0;
+  }
 `;
 
 export const OptionsContainer = styled.div`
@@ -24,6 +37,11 @@ export const OptionsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+ /* Anything screen width less than 800px will inherit the following styles */
+ @media screen and (max-width: 800px) {
+   width: 80%;
+  }
 `;
 
 /* Because we have a conditional style that applies to both div and Link,
