@@ -1,5 +1,5 @@
 {
-  "name": "crwn-clothing-redux-firebase",
+  "name": "crwn-clothing-hooks",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
