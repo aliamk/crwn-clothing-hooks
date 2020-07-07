@@ -17,4 +17,15 @@ const HomePage = () => (
   </HomePageContainer>
 )
 
+/* 
+FOR CHECKING WHETHER THE ERROR-BOUNDARY WORKS
+const HomePage = () => {
+  throw Error
+  return (
+    <HomePageContainer>
+      <Directory />
+    </HomePageContainer>
+  )
+} */
+
 export default HomePage
