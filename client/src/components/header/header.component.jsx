@@ -48,11 +48,6 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
 
  /* Use a ternary operation to show and hide the cart drowdown menu */
 
-// Advanced destructuring for nested values
-// const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
-//   currentUser,
-//   hidden
-// })
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
